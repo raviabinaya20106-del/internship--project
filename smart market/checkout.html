@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart E-Commerce | Secure Checkout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+        <a class="navbar-brand text-warning" href="index.html">SmartMarket Secure Checkout</a>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <div class="row g-5">
+        <div class="col-md-5 col-lg-4 order-md-last">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-primary">Your Items Summary</span>
+            </h4>
+            <ul class="list-group mb-3" id="checkout-summary">
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h6 class="my-0">Product Item</h6>
+                        <small class="text-muted">Brief description</small>
+                    </div>
+                    <span class="text-muted">$99.00</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-7 col-lg-8">
+            <h4 class="mb-3 fw-bold">Billing & Delivery Address</h4>
+            <form class="needs-validation" onsubmit="handleCheckoutForm(event)">
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label class="form-label">First name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label">Last name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Full Shipping Address</label>
+                        <input type="text" class="form-control" placeholder="Apartment, Street Address, City" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">State</label>
+                        <input type="text" class="form-control" placeholder="" required>
+                     </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Pincode</label>
+                        <input type="text" class="form-control" placeholder="" required>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <h5 class="mb-3 fw-bold">Payment Option</h5>
+                <div class="my-3">
+                    <div class="form-check">
+                        <input id="cod" name="paymentMethod" type="radio" class="form-check-input" value="COD" checked onclick="showPaymentFields()">
+                        <label class="form-check-label" for="cod">Cash on Delivery (COD)</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input id="card" name="paymentMethod" type="radio" class="form-check-input" value="Card" onclick="showPaymentFields()">
+                        <label class="form-check-label" for="card">Credit / Debit Card</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input id="gpay" name="paymentMethod" type="radio" class="form-check-input" value="GPay" onclick="showPaymentFields()">
+                        <label class="form-check-label" for="gpay">Google Pay</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input id="upi" name="paymentMethod" type="radio" class="form-check-input" value="UPI" onclick="showPaymentFields()">
+                        <label class="form-check-label" for="upi">UPI ID</label>
+                    </div>
+                </div>
+
+                <div id="cardFields" style="display:none;">
+                    <div class="mb-3">
+                        <label class="form-label">Card Number</label>
+                        <input type="text" class="form-control card-input" placeholder="1234 5678 9012 3456">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="form-label">Expiry Date</label>
+                            <input type="text" class="form-control card-input" placeholder="MM/YY">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">CVV</label>
+                            <input type="password" class="form-control card-input" placeholder="123">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="gpayFields" style="display:none;">
+                    <div class="card p-3 bg-light text-center border-0 mb-3 shadow-sm">
+                        <p class="fw-bold mb-2 text-secondary"><i class="fa-solid fa-qrcode me-2"></i>Scan to Pay via UPI App</p>
+                        <img src="C:\Users\ravia\OneDrive\Desktop\proj.git\smart market\scaner.jpeg" alt="Google Pay QR Code" class="img-fluid mx-auto rounded border p-2 bg-white" style="max-width: 240px; width: 100%;">
+                        <div class="mt-2 text-muted small">UPI ID: raviabinaya20106@oksbi</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Google Pay Number / Reference Transaction ID</label>
+                        <input type="text" class="form-control gpay-input" placeholder="Enter Mobile Number or Reference No.">
+                    </div>
+                </div>
+
+                <div id="upiFields" style="display:none;">
+                    <div class="mb-3">
+                        <label class="form-label">UPI ID</label>
+                        <input type="text" class="form-control upi-input" placeholder="username@bank">
+                    </div>
+                </div>
+
+                <button class="w-100 btn btn-success btn-lg mt-4" type="submit">Place Order (Securely)</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
