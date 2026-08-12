@@ -1,7 +1,5 @@
 import React from 'react';
-
 const Home = ({ products = [], wishlistItems = [], onAddToCart, onToggleWishlist, onNavigate }) => {
-  // Grab the first product for the trending list section display fallback if needed
   const trendingProduct = products[0] || {
     id: 1,
     title: "Premium Wireless Headphones",
