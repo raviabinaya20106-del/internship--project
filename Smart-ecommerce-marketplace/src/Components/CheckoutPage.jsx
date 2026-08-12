@@ -13,8 +13,6 @@ export default function CheckoutPage({ cartItems = [], onNavigate }) {
     expiryDate: '',
     cvv: ''
   });
-
-  // Calculate product details for the summary card array
   const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   const handleInputChange = (e) => {
@@ -31,14 +29,11 @@ export default function CheckoutPage({ cartItems = [], onNavigate }) {
   return (
     <div className="container my-5 min-vh-100">
       <div className="row g-4">
-        
-        {/* LEFT BLOCK: Billing & Shipping Address Setup */}
         <div className="col-12 col-lg-8">
           <div className="card border-0 shadow-sm rounded-3 p-4 bg-white">
             <h4 className="fw-bold mb-4 text-dark">Billing & Delivery Address</h4>
             
             <form onSubmit={handleSubmitOrder}>
-              {/* Names row */}
               <div className="row g-3 mb-3">
                 <div className="col-md-6">
                   <label className="form-label text-muted small">First name</label>
@@ -63,8 +58,6 @@ export default function CheckoutPage({ cartItems = [], onNavigate }) {
                   />
                 </div>
               </div>
-
-              {/* Full Address */}
               <div className="mb-3">
                 <label className="form-label text-muted small">Full Shipping Address</label>
                 <input 
@@ -77,8 +70,6 @@ export default function CheckoutPage({ cartItems = [], onNavigate }) {
                   required 
                 />
               </div>
-
-              {/* State and Pincode */}
               <div className="row g-3 mb-5">
                 <div className="col-md-6">
                   <label className="form-label text-muted small">State</label>
@@ -104,7 +95,6 @@ export default function CheckoutPage({ cartItems = [], onNavigate }) {
                 </div>
               </div>
 
-              {/* Payment Methods Wrapper */}
               <h5 className="fw-bold mb-3 text-dark">Payment Option</h5>
               
               <div className="d-flex flex-column gap-2 mb-4">
@@ -149,8 +139,6 @@ export default function CheckoutPage({ cartItems = [], onNavigate }) {
                   UPI ID
                 </label>
               </div>
-
-              {/* Conditional Card inputs */}
               {formData.paymentMethod === 'credit' && (
                 <div className="row g-3 mb-4 p-3 bg-light rounded-3">
                   <div className="col-12">
@@ -188,8 +176,6 @@ export default function CheckoutPage({ cartItems = [], onNavigate }) {
                   </div>
                 </div>
               )}
-
-              {/* Big Action Submit */}
               <button type="submit" className="btn btn-teal text-white w-100 py-2.5 fw-bold mt-3 shadow-sm rounded-2">
                 Place Order (Securely)
               </button>
@@ -197,8 +183,6 @@ export default function CheckoutPage({ cartItems = [], onNavigate }) {
 
           </div>
         </div>
-
-        {/* RIGHT BLOCK: Selected Items Summary Column */}
         <div className="col-12 col-lg-4">
           <div className="card border-0 shadow-sm rounded-3 p-4 bg-white sticky-top" style={{ top: '90px' }}>
             <h5 className="fw-bold mb-3 text-primary">Your Items Summary</h5>
